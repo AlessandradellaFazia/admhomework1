@@ -1502,8 +1502,6 @@ if __name__ == '__main__':
 
 
 # Insertion Sort - Part 1
-#!/bin/python3
-
 import math
 import os
 import random
@@ -1513,14 +1511,18 @@ import sys
 def insertionSort1(n, arr):
     to_sort = arr[len(arr) -1]
     idx = len(arr) - 2
-    for i in range(idx, -1, -1):
-        if (arr[i] <= to_sort):
-            break
-        arr[i + 1] = arr[i]
-        print(*arr)
-    arr[i+1] = to_sort
+    for i in range(idx, -2, -1):
+        if (i != -1):
+            if (arr[i] <= to_sort):
+                break
+            arr[i + 1] = arr[i]
+            print(*arr)
+    arr[i + 1] = to_sort
+    if (i == -1):
+        arr[0] = to_sort
+    
     print(*arr)
-        
+
 if __name__ == '__main__':
     n = int(input())
 
@@ -1528,9 +1530,8 @@ if __name__ == '__main__':
 
     insertionSort1(n, arr)
 
-# Insertion Sort - Part 2
-#!/bin/python3
 
+# Insertion Sort - Part 2
 import math
 import os
 import random
@@ -1570,3 +1571,42 @@ if __name__ == '__main__':
     result = birthdayCakeCandles(candles)
     fptr.write(str(result) + '\n')
     fptr.close()
+    
+    
+# Incorrect Regex
+import re
+
+n = int(input())
+for _ in range(n):
+    s = input()
+    try:
+        re.compile(s)
+        print("True")
+    except:
+        print("False")
+        
+        
+        
+# Text Alignment
+thickness = int(input()) #This must be an odd number
+c = 'H'
+
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
