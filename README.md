@@ -6,6 +6,9 @@
  ***
  ## stamps
  The folder contains PDF files.
- Each file is a printout of a HacherRank profile submissions page.
+ 
+ Each file is a printout of a HacherRank profile submissions page, 
+ 
  with both failures and successes. 
+ 
  Every failure is followed by relative success.
