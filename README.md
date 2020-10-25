@@ -1,4 +1,5 @@
 # admhomework1
+ Collection of all the material to be submited for the first homework for ADM.
  
  ## scripts.py 
  Contains all the solution codes of the problems provided by the [HackerRank](https://www.hackerrank.com) platform.
