@@ -1,3 +1,395 @@
+# Say "Hello, World!" With Python
+print("Hello, World!")
+
+# Python If-Else
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def weird():
+    print("Weird")
+
+def notWeird():
+    print("Not Weird")
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    if (n < 1 or n > 100):
+        exit()
+
+    if n % 2 != 0 : #odd
+        weird()
+    elif n in range(2, 6): 
+        notWeird()
+    elif n in range(6, 21):
+        weird()
+    else: 
+        notWeird()
+
+        
+    
+
+
+
+# Arithmetic Operators
+import math
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+
+    if a in range(1, pow(10,10)) or b in range (1, pow(10,10)):
+        exit
+    
+    print(a + b)
+    print(a - b)
+    print(a * b)
+
+
+
+# Python: Division
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+
+    if b:
+        print(a//b)
+        print (a/b)
+
+
+
+# Loops
+if __name__ == '__main__':
+    n = int(input())
+    for i in range (0, n):
+        print(i**2)
+
+
+
+# Write a fuction
+def is_leap(year):
+    leap = False
+    
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                leap = True
+        else: 
+            leap = True
+                   
+    return leap
+
+year = int(input())
+
+
+# Print Fuction
+def is_leap(year):
+    leap = False
+    
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                leap = True
+        else: 
+            leap = True
+                   
+    return leap
+
+year = int(input())
+
+
+# Validating Postal Codes
+regex_integer_in_range = r"[1-9][0-9][0-9][0-9][0-9][0-9]$"	# Do not delete 'r'.
+regex_alternating_repetitive_digit_pair = r"(?=([0-9]).\1)"	# Do not delete 'r'.
+
+
+import re
+P = input()
+
+print (bool(re.match(regex_integer_in_range, P)) 
+and len(re.findall(regex_alternating_repetitive_digit_pair, P)) < 2)
+
+
+
+# List Comprehensions
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+
+    cuboid = [[i,j,k] for i in range(x+1) for j in range(y+1) for k in range(z+1) if i + j + k != n]
+
+    print(cuboid)
+    
+    
+# Find the Runner-Up Score!
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+
+    scores = list(set(arr))
+    scores.sort()
+    try:
+        print(list(scores)[-2])
+    except IndexError:
+        exit()
+
+
+# Nested Lists
+if __name__ == '__main__':
+    students = []
+    scores = []
+    for _ in range(int(input())):       
+        name = input()
+        score = float(input())
+        students.append([name,score])
+        scores.append(score)
+  
+    unique_grades = list(set(scores))
+    unique_grades.sort()
+    try:        
+        second_grade = unique_grades[1]        
+        second_students = [s[0] for s in students if s[1] == second_grade]
+        second_students.sort()
+        for second in second_students:
+            print(second)
+    except IndexError:
+        exit()
+
+
+# Finding the percentage
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+
+    target_values = student_marks[query_name]
+    try:
+        media = sum(target_values) / len(target_values)
+        print('%.2f'%media)
+    except ZeroDivisionError:
+        exit()
+
+
+# Collections.namedtuple()
+
+from collections import namedtuple
+
+if __name__ == '__main__':
+
+    n = int(input())
+    nameFields = input().split()    
+    Student = namedtuple('Student', field_names = nameFields)
+
+    students = [Student._make(input().split()) for _ in range(n)]    
+    voti = [float(getattr(s, 'MARKS')) for s in students]
+    print('%.2f'%(sum(voti)/n))
+
+
+# Collections.OrderedDict()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import OrderedDict
+from functools import reduce
+
+class SumValueDict(OrderedDict):
+    def __setitem__(self, key, value):
+        if key in self:
+            oldvalue = self[key] 
+            OrderedDict.__setitem__(self,key,oldvalue + value)
+        else:   
+            OrderedDict.__setitem__(self,key,value)
+
+def add(x, y): return x + ' ' + y
+
+if __name__ == '__main__':
+    foodItems = SumValueDict()
+    n = int(input())
+    for _ in range(n):
+        *name_item, price = input().split()
+        foodItems[reduce(add, name_item)] = int(price)
+    
+    for k,v in foodItems.items():
+        print(k,v)
+    
+
+
+
+#Word Order
+
+n = int(input())
+
+d = {}
+for _ in range(n):    
+    word = input()
+    d[word] = d.get(word, 0) + 1
+
+
+print(len(d))
+for k in d:
+    print(d[k], end = ' ')
+
+
+# Piling Up!
+
+from collections import deque
+def cubePilor(l):
+    cubePile = []
+    while (len(l) > 1):
+        if l[0] == l[-1]:
+            cube = l.popleft()
+            l.pop()
+        elif l[0] > l[-1]:
+            cube = l.popleft()
+        else:
+            cube = l.pop()
+
+        if (len(cubePile) == 0):
+            cubePile.append(cube)
+        else:
+            if (cubePile[-1] >= cube):
+                cubePile.append(cube)
+            else:
+                return False
+    if (len(l) == 1):
+        if l[0] > cubePile[-1]:
+            return False
+    return True
+
+
+if __name__ == '__main__':
+    
+    n = int(input())
+    for _ in range(n):
+        input()
+        listaStr = input().split()
+        
+        cubeSides = deque(map(int, listaStr))    
+        if(cubePilor(cubeSides)):
+            print('Yes')
+        else:
+            print('No')
+
+
+
+
+# Company Logo 
+
+from operator import itemgetter
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    s = input()
+    uniqueCaract = list(set(s))
+    
+    caractFrequency = {c : s.count(c) for c in uniqueCaract}
+    
+    sortedByAlph = sorted(caractFrequency.items(), key=itemgetter(0))
+    sortedByFreq= sorted(sortedByAlph, key=itemgetter(1),reverse=True)
+
+    for i in range(3):
+        print(*sortedByFreq[i])
+
+
+
+
+# Exceptions
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        try:
+            a,b = map(int, input().split())       
+        
+            print(a//b)
+        except (ZeroDivisionError,ValueError) as e:
+            print('Error Code:',e)
+
+
+
+# Merge the Tools!
+from functools import reduce
+
+def add(x,y):
+    return x + y
+
+def deleteDupl(stringa):
+    i = 0    
+    while i < len(stringa):
+        j = i + 1
+        while (j < len(stringa)):
+            if stringa[i] == stringa[j]:
+                stringa.pop(j)
+            else:
+                j += 1            
+        i += 1
+    return stringa
+
+def merge_the_tools(frase, k):
+    # your code goes here
+    splitted = [frase[i:i+k] for i in range(0,len(frase),k)]
+    listSplitted = [list(x) for x in splitted]
+    listUnique = map(deleteDupl,listSplitted)
+    result = [reduce(add, elem) for elem in listUnique]
+
+    for e in result:
+        print(e)
+    
+
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
+    
+    
+# Time Delta
+import math
+import os
+import random
+import re
+import sys
+from datetime import datetime
+
+
+def time_delta(t1, t2):
+    datetime1 = datetime.strptime(t1, "%a %d %b %Y %H:%M:%S %z")
+    datetime2 = datetime.strptime(t2, "%a %d %b %Y %H:%M:%S %z")
+    delta = datetime1 - datetime2
+    return abs(delta.total_seconds())
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input())
+
+    for t_itr in range(t):
+        t1 = input()
+
+        t2 = input()
+
+        delta = time_delta(t1, t2)
+        deltastr = ('%d'%delta)
+        fptr.write(deltastr + '\n')
+
+    fptr.close()
+
+
+# 
+
 # The Minion Game 
 import re
 
@@ -55,6 +447,16 @@ if __name__ == '__main__':
     results = [ 1 if x in like else -1 if x in dontlike else 0 for x in arr]
     
     print(sum(results))
+
+# Input() 
+if __name__ == '__main__':
+    
+    x, k = map(int,input().split())
+    print( eval( input()) == k)
+
+
+
+
 
 #Zipped!
 if __name__ == '__main__':
@@ -166,6 +568,22 @@ o  = np.ones((params),dtype=int)
 print(z)
 print(o)
 
+
+# Detect Floating Point Number 
+
+import re
+
+
+if __name__ == '__main__':   
+
+    n = int(input())
+    for _ in range(n):
+        test = input()
+        print(bool(re.search("^[-+]?[0-9]*\.[0-9]+$",test)))
+
+
+
+#
 
 # Eye and Identity
 import numpy as np
@@ -319,6 +737,21 @@ from email.utils import formataddr
 import re
 n = int(input())
 
+
+# Validating phone numbers
+import re
+n = int(input())
+for _ in range(n):
+    s = input()
+    if (len(s) != 10):
+        print("NO")
+    else:
+        if(bool(re.match("^[789][0-9]{9}$",s))):
+            print("YES")
+        else:
+            print("NO")
+
+
 for _ in range(n):
     s = input()
     name, email = parseaddr(s)    
@@ -367,7 +800,7 @@ for _ in range(n):
         print('Invalid')
 
 
-#Matrix Script
+# Matrix Script
 import re
 
 first_multiple_input = input().rstrip().split()
@@ -534,7 +967,7 @@ if __name__ == '__main__':
 
 
 
-#Standardize Mobile Number Using Decorators
+# Standardize Mobile Number Using Decorators
 def wrapper(f):
     def fun(l):
         new_l = []
@@ -709,7 +1142,7 @@ for _ in range(n):
     check.append((B.issubset(A)) and (len(A.difference(B)) != 0))
 print(all(check))
 
-# Swap Case
+# sWAP cASE
 def swap_case(s):
     return s.swapcase()
 if __name__ == '__main__':
@@ -966,7 +1399,6 @@ if __name__ == '__main__':
 
 
 # Number Line Jumps
-#!/bin/python3
 
 import math
 import os
@@ -1012,7 +1444,7 @@ import random
 import re
 import sys
 
-# Complete the viralAdvertising function below.
+
 def viralAdvertising(n):
     people = 5 
     cumulative = 0
