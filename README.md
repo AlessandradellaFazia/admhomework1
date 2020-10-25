@@ -1,4 +1,11 @@
 # admhomework1
  
  ## scripts.py 
- contains all the homework codes from hackeranck
+ Contains all the solution codes of the problems provided by the [HackerRank](https://www.hackerrank.com) platform.
+ 
+ ***
+ ## stamps
+ The folder contains PDF files.
+ Each file is a printout of a HacherRank profile submissions page.
+ with both failures and successes. 
+ Every failure is followed by relative success.
